@@ -13,6 +13,7 @@
     "framer-motion": "^4.1.17",
     "next": "11.0.1",
     "postcss": "^8.3.6",
+    "prism-react-renderer": "^1.2.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "tailwindcss": "^2.2.7"
