@@ -32,7 +32,70 @@ const Sidebar = ({ children }) => {
             </li>
             <li>
               <Link href="/" passHref>
-                <a>Variants</a>
+                <a>Layout Animation</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/" passHref>
+                <a>Shared Layout Animation</a>
+              </Link>
+            </li>
+          </ul>
+          <strong>Transition</strong>
+          <ul className="list-inside list-disc">
+            <li>
+              <Link href="/" passHref>
+                <a>Orchestration</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/" passHref>
+                <a>Tween</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/" passHref>
+                <a>Spring</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/" passHref>
+                <a>Inertia</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/" passHref>
+                <a>Miscellaneous</a>
+              </Link>
+            </li>
+          </ul>
+          <strong>Gestures</strong>
+          <strong>Motion Value</strong>
+          <strong>Utilities</strong>
+          <ul className="list-inside list-disc">
+            <li>
+              <Link href="/" passHref>
+                <a>useCycle</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/" passHref>
+                <a>useAnimation</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/" passHref>
+                <a>useReducedMotion</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/" passHref>
+                <a>LazyMotion</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/" passHref>
+                <a>MotionConfig</a>
               </Link>
             </li>
           </ul>
