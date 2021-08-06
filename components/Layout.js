@@ -1,29 +1,52 @@
 import React, { useState } from 'react';
+import Link from 'next/link'
 import { AnimatePresence, motion } from 'framer-motion'
 
-const widthSidebar = 80
 const Sidebar = ({ children }) => {
   const [openSidebar, setOpenSidebar] = useState(false);
 
   return <>
-    <motion.nav
-      className="fixed h-screen bg-white bg-opacity-25 z-20"
-      initial={{ width: widthSidebar }}
-      animate={{ width: openSidebar ? widthSidebar * 2 : widthSidebar }}
-    >
-      <button onClick={() => setOpenSidebar(prev => !prev)} className="p-2 bg-blue-400 text-white">
-        {openSidebar ? 'Close' : 'Open'}
-      </button>
-    </motion.nav>
+    <button onClick={() => setOpenSidebar(prev => !prev)} className="absolute left-4 top-1/2 transform-gpu -translate-y-1/2 h-8 w-8 bg-white rounded z-10">
+    </button>
     <AnimatePresence>
-      {openSidebar && <motion.div
-        onClick={() => setOpenSidebar(prev => !prev)}
-        className="fixed top-0 left-0 h-screen w-screen z-10"
-        animate={{ backgroundColor: 'rgba(0,0,0,0.2)' }}
-        exit={{ backgroundColor: 'rgba(0,0,0,0)' }}
-      />}
+      {openSidebar && <>
+        <motion.nav
+          key="menu"
+          className="fixed h-screen flex flex-col rounded-r-xl p-3 bg-white z-20"
+          initial={{ x: '-100%' }}
+          animate={{ x: '0%' }}
+          exit={{ x: '-100%' }}
+          transition={{ type: 'tween', ease: [0.20, .75, .40, .95] }}
+        >
+          <strong>motion Component</strong>
+          <ul className="list-inside list-disc">
+            <li>
+              <Link href="/" passHref>
+                <a>Basic animation</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/" passHref>
+                <a>Transition</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/" passHref>
+                <a>Variants</a>
+              </Link>
+            </li>
+          </ul>
+        </motion.nav>
+        <motion.div
+          key="backdrop-menu"
+          onClick={() => setOpenSidebar(prev => !prev)}
+          className="fixed top-0 left-0 h-screen w-screen z-10"
+          animate={{ backgroundColor: 'rgba(30, 30, 30, 0.3)' }}
+          exit={{ backgroundColor: 'rgba(30, 30, 30, 0)' }}
+        />
+      </>}
     </AnimatePresence>
-    <main style={{ marginLeft: widthSidebar }} className="relative flex-1 h-screen overflow-y-auto">
+    <main className="relative flex-1 h-screen overflow-y-auto">
       {children}
     </main>
   </>
