@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { AnimatePresence, motion } from 'framer-motion'
 
 const Sidebar = ({ children }) => {
   const [openSidebar, setOpenSidebar] = useState(false);
+  const router = useRouter()
+
+  useEffect(() => {
+    router.events.on('routeChangeComplete', () => setOpenSidebar(false))
+    return () => router.events.off('routeChangeComplete', () => setOpenSidebar(false))
+  }, [])
 
   return <>
     <button onClick={() => setOpenSidebar(prev => !prev)} className="absolute left-4 top-1/2 transform-gpu -translate-y-1/2 h-8 w-8 bg-white rounded z-10">
@@ -21,17 +28,12 @@ const Sidebar = ({ children }) => {
           <strong>motion Component</strong>
           <ul className="list-inside list-disc">
             <li>
-              <Link href="/" passHref>
+              <Link href="/basic-animation" passHref>
                 <a>Basic animation</a>
               </Link>
             </li>
             <li>
-              <Link href="/" passHref>
-                <a>Transition</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/" passHref>
+              <Link href="/layout-animation" passHref>
                 <a>Layout Animation</a>
               </Link>
             </li>
