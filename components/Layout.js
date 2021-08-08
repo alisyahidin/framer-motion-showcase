@@ -10,7 +10,7 @@ const Sidebar = ({ children }) => {
   useEffect(() => {
     router.events.on('routeChangeComplete', () => setOpenSidebar(false))
     return () => router.events.off('routeChangeComplete', () => setOpenSidebar(false))
-  }, [])
+  }, [router.events])
 
   return <>
     <button onClick={() => setOpenSidebar(prev => !prev)} className="absolute left-4 top-1/2 transform-gpu -translate-y-1/2 h-8 w-8 bg-white rounded z-10">

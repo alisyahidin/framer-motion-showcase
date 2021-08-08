@@ -80,7 +80,7 @@ export default function BasicAnimation() {
           </div>
           <div className="p-3 border-l-2 border-gray-700">
             <div>
-              <div className="flex justify-between">
+              <div className="flex items-center justify-between">
                 <strong>Initial</strong>
                 <input type="checkbox" onChange={e => setinitial(e.target.checked)} checked={initial} />
               </div>
@@ -93,7 +93,7 @@ export default function BasicAnimation() {
               <ValueSlider title="Rotate" value={rotate} setValue={setRotate} min={0} max={360} />
             </div>
             <div className="pt-5 mt-5 border-t-2">
-              <div className="flex justify-between">
+              <div className="flex items-center justify-between">
                 <strong>Exit</strong>
                 <input type="checkbox" onChange={e => setWithExit(e.target.checked)} checked={withExit} />
               </div>
