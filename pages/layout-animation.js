@@ -134,6 +134,59 @@ const ReorderList = () => {
   )
 }
 
+const FlexGrow = () => {
+  const [layout, setLayout] = useState(true);
+  const [toggleGrow, setToggleGrow] = useState(false);
+
+  const getCode = (toggleGrow, layout) => `
+<div className="flex">
+  <motion.div
+    className="purple"
+    style={{ flexGrow: ${toggleGrow ? 2 : 1} }}
+    ${layout ? 'layout' : 'layout={false}'}
+  />
+  <motion.div
+    className="pink"
+    style={{ flexGrow: ${toggleGrow ? 1 : 2} }}
+    ${layout ? 'layout' : 'layout={false}'}
+  />
+</div>`.trim()
+
+  return (
+    <div className="w-4/5">
+      <h1 className="text-white text-3xl mb-4">Flex Grow</h1>
+      <div className="flex shadow rounded-xl bg-white bg-opacity-20 h-96 blur">
+        <div className="flex items-center justify-center w-full overflow-hidden relative">
+          <div className="flex gap-3 p-3 bg-white bg-opacity-25 w-4/5 rounded-lg cursor-pointer">
+            <motion.div layout={layout} style={{ flexGrow: toggleGrow ? 2 : 1 }} className="h-24 rounded-lg bg-purple-500" />
+            <motion.div layout={layout} style={{ flexGrow: toggleGrow ? 1 : 2 }} className="h-24 rounded-lg bg-pink-500" />
+            <div className="absolute bottom-3 right-3">
+              <button onClick={() => setToggleGrow(!toggleGrow)} className="bg-black bg-opacity-20 text-white py-1 px-2 rounded">
+                Switch
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="flex bg-gray-900 rounded-r-xl text-white">
+          <div className="flex p-4 w-80">
+            <Highlight language="jsx">
+              {getCode(toggleGrow, layout)}
+            </Highlight>
+          </div>
+          <div className="p-3 w-64 border-l-2 border-gray-700">
+            <div>
+              <div className="flex items-center justify-between">
+                <strong>Layout</strong>
+                <input type="checkbox" onChange={e => setLayout(e.target.checked)} checked={layout} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function LayoutAnimation() {
   return (<>
     <Head>
@@ -143,6 +196,7 @@ export default function LayoutAnimation() {
     <div className="flex flex-col justify-center items-center py-36 gap-36">
       <ChangeParentLayout />
       <ReorderList />
+      <FlexGrow />
     </div>
   </>)
 }
