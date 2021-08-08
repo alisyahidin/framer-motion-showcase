@@ -46,21 +46,23 @@ const ChangeParentLayout = () => {
   )
 }
 
+const listColor = ['white', 'red', 'yellow', 'green', 'blue']
 const ReorderList = () => {
   const [layout, setLayout] = useState(true);
-  const [list, setList] = useState(['white', 'red', 'yellow', 'green', 'blue']);
+  const [currentColor, setCurrentColor] = useState('white');
+  const [list, setList] = useState([...listColor]);
 
   const getCode = (list, layout) => `
 <ul className="flex flex-col">
-  <motion.li className="${list[0]}" ${layout ? 'layout' : 'layout={false}'} />
-  <motion.li className="${list[1]}" ${layout ? 'layout' : 'layout={false}'} />
-  <motion.li className="${list[2]}" ${layout ? 'layout' : 'layout={false}'} />
-  <motion.li className="${list[3]}" ${layout ? 'layout' : 'layout={false}'} />
-  <motion.li className="${list[4]}" ${layout ? 'layout' : 'layout={false}'} />
+  <motion.li style={{ order: ${list.indexOf('white') + 1} }} className="white" ${layout ? 'layout' : 'layout={false}'} />
+  <motion.li style={{ order: ${list.indexOf('red') + 1} }} className="red" ${layout ? 'layout' : 'layout={false}'} />
+  <motion.li style={{ order: ${list.indexOf('yellow') + 1} }} className="yellow" ${layout ? 'layout' : 'layout={false}'} />
+  <motion.li style={{ order: ${list.indexOf('green') + 1} }} className="green" ${layout ? 'layout' : 'layout={false}'} />
+  <motion.li style={{ order: ${list.indexOf('blue') + 1} }} className="blue" ${layout ? 'layout' : 'layout={false}'} />
 </ul>`.trim()
 
   const reorder = (direction = 'up') => {
-    const selectedIndex = list.indexOf('white')
+    const selectedIndex = list.indexOf(currentColor)
     if ((direction === 'up' && selectedIndex === 0) ||
       (direction === 'down' && selectedIndex === list.length)) return
 
@@ -82,28 +84,33 @@ const ReorderList = () => {
             <motion.li layout={layout} style={{ order: list.indexOf('blue') + 1 }} className={`w-full h-12 rounded-lg bg-blue-400`} />
           </ul>
           <div className="absolute bottom-3 right-3">
-            <div className="flex flex-col">
-              <button onClick={() => reorder('up')}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width={20}
-                  height={20}
-                  viewBox="0 0 292.362 292.361"
-                >
-                  <path fill="#FFF" d="M286.935 197.287L159.028 69.381c-3.613-3.617-7.895-5.424-12.847-5.424s-9.233 1.807-12.85 5.424L5.424 197.287C1.807 200.904 0 205.186 0 210.134s1.807 9.233 5.424 12.847c3.621 3.617 7.902 5.425 12.85 5.425h255.813c4.949 0 9.233-1.808 12.848-5.425 3.613-3.613 5.427-7.898 5.427-12.847s-1.814-9.23-5.427-12.847z" />
-                </svg>
-              </button>
-              <button onClick={() => reorder('down')}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width={20}
-                  height={20}
-                  style={{ transform: 'rotate(180deg)' }}
-                  viewBox="0 0 292.362 292.361"
-                >
-                  <path fill="#FFF" d="M286.935 197.287L159.028 69.381c-3.613-3.617-7.895-5.424-12.847-5.424s-9.233 1.807-12.85 5.424L5.424 197.287C1.807 200.904 0 205.186 0 210.134s1.807 9.233 5.424 12.847c3.621 3.617 7.902 5.425 12.85 5.425h255.813c4.949 0 9.233-1.808 12.848-5.425 3.613-3.613 5.427-7.898 5.427-12.847s-1.814-9.23-5.427-12.847z" />
-                </svg>
-              </button>
+            <div className="flex items-center gap-3">
+              <select value={currentColor} onChange={e => setCurrentColor(e.target.value)}>
+                {listColor.map((item, i) => <option key={i} value={item}>{item}</option>)}
+              </select>
+              <div className="flex flex-col">
+                <button onClick={() => reorder('up')}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width={20}
+                    height={20}
+                    viewBox="0 0 292.362 292.361"
+                  >
+                    <path fill="#FFF" d="M286.935 197.287L159.028 69.381c-3.613-3.617-7.895-5.424-12.847-5.424s-9.233 1.807-12.85 5.424L5.424 197.287C1.807 200.904 0 205.186 0 210.134s1.807 9.233 5.424 12.847c3.621 3.617 7.902 5.425 12.85 5.425h255.813c4.949 0 9.233-1.808 12.848-5.425 3.613-3.613 5.427-7.898 5.427-12.847s-1.814-9.23-5.427-12.847z" />
+                  </svg>
+                </button>
+                <button onClick={() => reorder('down')}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width={20}
+                    height={20}
+                    style={{ transform: 'rotate(180deg)' }}
+                    viewBox="0 0 292.362 292.361"
+                  >
+                    <path fill="#FFF" d="M286.935 197.287L159.028 69.381c-3.613-3.617-7.895-5.424-12.847-5.424s-9.233 1.807-12.85 5.424L5.424 197.287C1.807 200.904 0 205.186 0 210.134s1.807 9.233 5.424 12.847c3.621 3.617 7.902 5.425 12.85 5.425h255.813c4.949 0 9.233-1.808 12.848-5.425 3.613-3.613 5.427-7.898 5.427-12.847s-1.814-9.23-5.427-12.847z" />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </div>
