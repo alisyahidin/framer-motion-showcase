@@ -134,6 +134,54 @@ const ReorderList = () => {
   )
 }
 
+
+const FlexDirection = () => {
+  const [layout, setLayout] = useState(true);
+  const [isColumn, toggleIsColumn] = useCycle(true, false)
+
+  const getCode = (isColumn, layout) => `
+<motion.ul
+  ${layout ? 'layout' : 'layout={false}'}
+  style={{
+    flexDirection: ${isColumn ? 'column' : 'row'}
+  }}
+>
+  <motion.li ${layout ? 'layout' : 'layout={false}'} />
+  <motion.li ${layout ? 'layout' : 'layout={false}'} />
+  <motion.li ${layout ? 'layout' : 'layout={false}'} />
+</motion.ul>`.trim()
+
+  return (
+    <div className="h-96 w-4/5">
+      <h1 className="text-white text-3xl mb-4">Change flex direction</h1>
+      <div className="flex shadow rounded-xl bg-white bg-opacity-20 h-5/6 blur">
+        <div onClick={toggleIsColumn} className="flex items-center justify-center w-full overflow-hidden relative">
+          <motion.ul layout={layout} style={{ flexDirection: isColumn ? 'column' : 'row' }} className="flex gap-4 p-4 bg-white bg-opacity-25 w-64 rounded-lg">
+            <motion.li layout={layout} className="w-full h-16 rounded-lg bg-blue-400" />
+            <motion.li layout={layout} className="w-full h-16 rounded-lg bg-white" />
+            <motion.li layout={layout} className="w-full h-16 rounded-lg bg-red-400" />
+          </motion.ul>
+        </div>
+        <div className="flex bg-gray-900 rounded-r-xl text-white">
+          <div className="flex p-4 w-80">
+            <Highlight language="jsx">
+              {getCode(isColumn, layout)}
+            </Highlight>
+          </div>
+          <div className="p-3 w-64 border-l-2 border-gray-700">
+            <div>
+              <div className="flex items-center justify-between">
+                <strong>Layout</strong>
+                <input type="checkbox" onChange={e => setLayout(e.target.checked)} checked={layout} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function LayoutAnimation() {
   return (<>
     <Head>
@@ -143,6 +191,7 @@ export default function LayoutAnimation() {
     <div className="flex flex-col justify-center items-center py-36 gap-36">
       <ChangeParentLayout />
       <ReorderList />
+      <FlexDirection />
     </div>
   </>)
 }
