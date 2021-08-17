@@ -93,6 +93,9 @@ function SharedLayoutAnimation() {
     <div className="flex flex-col justify-center items-center h-screen">
       <List />
     </div>
+    <div className="flex flex-col justify-center items-center h-screen">
+      <List />
+    </div>
   </>)
 }
 
