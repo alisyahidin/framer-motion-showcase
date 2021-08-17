@@ -38,7 +38,7 @@ const Sidebar = ({ children }) => {
               </Link>
             </li>
             <li>
-              <Link href="/" passHref>
+              <Link href="/shared-layout-animation" passHref>
                 <a>Shared Layout Animation</a>
               </Link>
             </li>

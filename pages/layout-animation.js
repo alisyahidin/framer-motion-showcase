@@ -156,10 +156,10 @@ const FlexDirection = () => {
       <h1 className="text-white text-3xl mb-4">Change flex direction</h1>
       <div className="flex shadow rounded-xl bg-white bg-opacity-20 h-5/6 blur">
         <div onClick={toggleIsColumn} className="flex items-center justify-center w-full overflow-hidden relative">
-          <motion.ul layout={layout} style={{ flexDirection: isColumn ? 'column' : 'row' }} className="flex gap-4 p-4 bg-white bg-opacity-25 w-64 rounded-lg">
-            <motion.li layout={layout} className="w-full h-16 rounded-lg bg-blue-400" />
-            <motion.li layout={layout} className="w-full h-16 rounded-lg bg-white" />
-            <motion.li layout={layout} className="w-full h-16 rounded-lg bg-red-400" />
+          <motion.ul layout={layout} initial={{ borderRadius: 8 }} style={{ flexDirection: isColumn ? 'column' : 'row', width: isColumn ? '90%' : '70%' }} className="flex gap-4 p-4 bg-white bg-opacity-25 w-64">
+            <motion.li layout={layout} initial={{ borderRadius: 8 }} className="w-full h-16 bg-blue-400" />
+            <motion.li layout={layout} initial={{ borderRadius: 8 }} className="w-full h-16 bg-white" />
+            <motion.li layout={layout} initial={{ borderRadius: 8 }} className="w-full h-16 bg-red-400" />
           </motion.ul>
         </div>
         <div className="flex bg-gray-900 rounded-r-xl text-white">
