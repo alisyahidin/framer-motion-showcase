@@ -4,13 +4,27 @@ import { AnimatePresence, motion } from 'framer-motion'
 import Highlight from 'components/Highlight'
 import ValueSlider from 'components/ValueSlider'
 
-const getCode = (
-  { x, y, scale, rotate, exitX, exitY, exitScale, exitRotate, },
-  withExit,
-  initial,
-  isMounted
-) => withExit ?
-    `<AnimatePresence>
+function AnimationProps() {
+  const [x, setX] = useState(0);
+  const [y, setY] = useState(0);
+  const [scale, setScale] = useState(1);
+  const [rotate, setRotate] = useState(0);
+  const [exitX, setExitX] = useState(0);
+  const [exitY, setExitY] = useState(0);
+  const [exitScale, setExitScale] = useState(0);
+  const [exitRotate, setExitRotate] = useState(0);
+
+  const [initial, setinitial] = useState(true);
+  const [withExit, setWithExit] = useState(false);
+  const [isMounted, setIsMounted] = useState(true);
+
+  const getCode = (
+    { x, y, scale, rotate, exitX, exitY, exitScale, exitRotate, },
+    withExit,
+    initial,
+    isMounted
+  ) => withExit ?
+      `<AnimatePresence>
   {${isMounted} && <motion.div
     key="box"
     ${initial ? 'initial' : 'initial={false}'}
@@ -35,29 +49,12 @@ const getCode = (
     scale: ${scale},
     rotate: ${rotate}
   }}
-/>`
+/>`.trim()
 
-export default function BasicAnimation() {
-  const [x, setX] = useState(0);
-  const [y, setY] = useState(0);
-  const [scale, setScale] = useState(1);
-  const [rotate, setRotate] = useState(0);
-  const [exitX, setExitX] = useState(0);
-  const [exitY, setExitY] = useState(0);
-  const [exitScale, setExitScale] = useState(0);
-  const [exitRotate, setExitRotate] = useState(0);
-
-  const [initial, setinitial] = useState(true);
-  const [withExit, setWithExit] = useState(false);
-  const [isMounted, setIsMounted] = useState(true);
-
-  return (<>
-    <Head>
-      <title>Framer Motion</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
-    <div className="flex justify-center items-center h-full">
-      <div className="flex shadow rounded-xl bg-white bg-opacity-20 w-4/5 blur">
+  return (
+    <div className="w-4/5">
+      <h1 className="text-white text-3xl mb-4">Animation Props</h1>
+      <div className="flex shadow rounded-xl bg-white bg-opacity-20 blur">
         <div className="flex items-center justify-center w-full overflow-hidden relative">
           <button onClick={() => setIsMounted(!isMounted)} className="absolute bg-black bg-opacity-20 text-white py-1 px-2 bottom-3 right-3 rounded">
             {isMounted ? 'Hide' : 'Show'}
@@ -73,7 +70,7 @@ export default function BasicAnimation() {
           </AnimatePresence>
         </div>
         <div className="flex bg-gray-900 rounded-r-xl text-white">
-          <div className="flex p-3 w-56">
+          <div className="flex p-3 w-64">
             <Highlight language="jsx">
               {getCode({ x, y, scale, rotate, exitX, exitY, exitScale, exitRotate }, withExit, initial, isMounted)}
             </Highlight>
@@ -105,6 +102,71 @@ export default function BasicAnimation() {
           </div>
         </div>
       </div>
+    </div>
+  )
+}
+
+function AnimationKeyframes() {
+
+  const [initial, setinitial] = useState(true);
+
+  const getCode = () => `
+<motion.div
+  className="w-24 h-24 bg-white"
+  animate={{
+    x: [0, 20, 30, 60, 0],
+    y: [0, 35, 70, 50, 0],
+    scale: [1, 0.5, 1, 2.5, 1],
+    backgroundColor: ['#f87171', '#f87171', '#fbbf24', '#60affa', '#f87171'],
+    borderRadius: [70, 30, 14, 40, 70]
+  }}
+  transition={{ repeat: Infinity, duration: 4 }}
+/>`.trim()
+
+  function getRandom(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  return (
+    <div className="w-4/5">
+      <h1 className="text-white text-3xl mb-4">Animation Keyframes</h1>
+      <div className="flex shadow rounded-xl bg-white bg-opacity-20 blur h-96">
+        <div className="flex items-center justify-center w-full overflow-hidden relative">
+          <motion.div
+            className="w-24 h-24 bg-white"
+            animate={{
+              x: [0, getRandom(10, 30), getRandom(0, 50), getRandom(60, 90), 0],
+              y: [0, getRandom(15, 35), getRandom(30, 70), getRandom(-50, 50), 0],
+              scale: [1, 0.5, 1, 2.5, 1],
+              backgroundColor: ['#f87171', '#f87171', '#fbbf24', '#60affa', '#f87171'],
+              borderRadius: [70, 30, 14, 40, 70]
+            }}
+            transition={{ repeat: Infinity, duration: 4 }}
+          />
+        </div>
+        <div className="flex bg-gray-900 rounded-r-xl text-white">
+          <div className="flex p-3">
+            <Highlight language="jsx">
+              {getCode()}
+            </Highlight>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default function BasicAnimation() {
+  return (<>
+    <Head>
+      <title>Framer Motion</title>
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
+    <div className="flex flex-col justify-center items-center h-screen">
+      <AnimationProps />
+    </div>
+    <div className="flex flex-col justify-center items-center h-screen">
+      <AnimationKeyframes />
     </div>
   </>)
 }
