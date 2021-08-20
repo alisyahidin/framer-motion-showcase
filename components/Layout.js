@@ -46,7 +46,7 @@ const Sidebar = ({ children }) => {
           <strong>Transition</strong>
           <ul className="list-inside list-disc">
             <li>
-              <Link href="/" passHref>
+              <Link href="/orchestration" passHref>
                 <a>Orchestration</a>
               </Link>
             </li>

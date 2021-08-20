@@ -208,7 +208,7 @@ const item = {
           <button onClick={() => setIsMounted(!isMounted)} className="absolute bg-black bg-opacity-20 text-white py-1 px-2 bottom-3 right-3 rounded">
             {isMounted ? 'Hide' : 'Show'}
           </button>
-          <motion.ul variants={wrapper} animate={isMounted ? 'show' : 'hide'} className="flex flex-col gap-3 p-4 bg-gray-100 w-64 rounded-lg">
+          <motion.ul initial={false} variants={wrapper} animate={isMounted ? 'show' : 'hide'} className="flex flex-col gap-3 p-4 bg-gray-100 w-64 rounded-lg">
             <motion.li variants={item} className={`w-full h-12 rounded-lg bg-purple-400`} />
             <motion.li variants={item} className={`w-full h-12 rounded-lg bg-red-400`} />
             <motion.li variants={item} className={`w-full h-12 rounded-lg bg-yellow-400`} />

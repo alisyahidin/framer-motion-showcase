@@ -97,11 +97,11 @@ const NavigationMenu = () => {
 
   const getCode = (layout) => `
 ${!layout ? '// ' : ''}<AnimateSharedLayout>
-  <motion.ul layout>
+  <ul>
     {menus.map(index => (
       <MenuItem key={index} />
     ))}
-  </motion.ul>
+  </ul>
 ${!layout ? '// ' : ''}</AnimateSharedLayout>
 
 const MenuItem = () => (
