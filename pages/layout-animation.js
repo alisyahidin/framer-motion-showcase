@@ -46,15 +46,15 @@ const ChangeParentLayout = () => {
   )
 }
 
-const listColor = ['white', 'red', 'yellow', 'green', 'blue']
+const listColor = ['purple', 'red', 'yellow', 'green', 'blue']
 const ReorderList = () => {
   const [layout, setLayout] = useState(true);
-  const [currentColor, setCurrentColor] = useState('white');
+  const [currentColor, setCurrentColor] = useState('purple');
   const [list, setList] = useState([...listColor]);
 
   const getCode = (list, layout) => `
 <ul className="flex flex-col">
-  <motion.li style={{ order: ${list.indexOf('white') + 1} }} className="white" ${layout ? 'layout' : 'layout={false}'} />
+  <motion.li style={{ order: ${list.indexOf('purple') + 1} }} className="purple" ${layout ? 'layout' : 'layout={false}'} />
   <motion.li style={{ order: ${list.indexOf('red') + 1} }} className="red" ${layout ? 'layout' : 'layout={false}'} />
   <motion.li style={{ order: ${list.indexOf('yellow') + 1} }} className="yellow" ${layout ? 'layout' : 'layout={false}'} />
   <motion.li style={{ order: ${list.indexOf('green') + 1} }} className="green" ${layout ? 'layout' : 'layout={false}'} />
@@ -76,8 +76,8 @@ const ReorderList = () => {
       <h1 className="text-white text-3xl mb-4">Reorder List</h1>
       <div className="flex shadow rounded-xl bg-white bg-opacity-20 h-96 blur">
         <div className="flex items-center justify-center w-full overflow-hidden relative">
-          <ul className="flex flex-col gap-3 p-4 bg-white bg-opacity-25 w-64 rounded-lg cursor-pointer">
-            <motion.li layout={layout} style={{ order: list.indexOf('white') + 1 }} className={`w-full h-12 rounded-lg bg-white`} />
+          <ul className="flex flex-col gap-3 p-4 bg-white w-64 rounded-lg cursor-pointer">
+            <motion.li layout={layout} style={{ order: list.indexOf('purple') + 1 }} className={`w-full h-12 rounded-lg bg-purple-400`} />
             <motion.li layout={layout} style={{ order: list.indexOf('red') + 1 }} className={`w-full h-12 rounded-lg bg-red-400`} />
             <motion.li layout={layout} style={{ order: list.indexOf('yellow') + 1 }} className={`w-full h-12 rounded-lg bg-yellow-400`} />
             <motion.li layout={layout} style={{ order: list.indexOf('green') + 1 }} className={`w-full h-12 rounded-lg bg-green-400`} />
@@ -155,8 +155,8 @@ const FlexDirection = () => {
     <div className="h-96 w-4/5">
       <h1 className="text-white text-3xl mb-4">Change flex direction</h1>
       <div className="flex shadow rounded-xl bg-white bg-opacity-20 h-5/6 blur">
-        <div onClick={toggleIsColumn} className="flex items-center justify-center w-full overflow-hidden relative">
-          <motion.ul layout={layout} initial={{ borderRadius: 8 }} style={{ flexDirection: isColumn ? 'column' : 'row', width: isColumn ? '90%' : '70%' }} className="flex gap-4 p-4 bg-white bg-opacity-25 w-64">
+        <div className="flex items-center justify-center w-full overflow-hidden relative">
+          <motion.ul onClick={toggleIsColumn} layout={layout} initial={{ borderRadius: 8 }} style={{ flexDirection: isColumn ? 'column' : 'row', width: isColumn ? '90%' : '70%' }} className="flex gap-4 p-4 bg-white bg-opacity-25 w-64 cursor-pointer">
             <motion.li layout={layout} initial={{ borderRadius: 8 }} className="w-full h-16 bg-blue-400" />
             <motion.li layout={layout} initial={{ borderRadius: 8 }} className="w-full h-16 bg-white" />
             <motion.li layout={layout} initial={{ borderRadius: 8 }} className="w-full h-16 bg-red-400" />

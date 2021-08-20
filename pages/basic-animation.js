@@ -165,7 +165,7 @@ const item = {
   show: { opacity: 1, y: 0 }
 }
 
-<motion.ul variants={wrapper} animate="${isMounted ? 'show' : 'hide'}">
+<motion.ul variants={wrapper} animate={${isMounted} ? 'show' : 'hide'}>
   {items.map(index => (
     <motion.li key={index} variants={item} />
   ))}
@@ -216,8 +216,8 @@ const item = {
             <motion.li variants={item} className={`w-full h-12 rounded-lg bg-blue-400`} />
           </motion.ul>
         </div>
-        <div className="flex bg-gray-900 rounded-r-xl text-white">
-          <div className="flex p-3">
+        <div className="flex bg-gray-900 rounded-r-xl">
+          <div className="flex p-3" style={{ width: 665 }}>
             <Highlight language="jsx">
               {getCode(isMounted)}
             </Highlight>
