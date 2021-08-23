@@ -44,7 +44,7 @@ const ListItem = () => {
 
   return (
     <div className="flex flex-col justify-center h-5/6 w-4/5">
-      <h1 className="text-white text-3xl mb-4">Shared layout child component's state</h1>
+      <h1 className="text-white text-3xl mb-4">Shared layout child components state</h1>
       <div className="flex shadow rounded-xl bg-white bg-opacity-20 blur">
         <div className="flex items-center justify-center w-full overflow-hidden relative">
           {layout

@@ -75,7 +75,7 @@ const item = {
           </motion.ul>
         </div>
         <div className="flex bg-gray-900 rounded-r-xl">
-          <div className="flex p-3" style={{ width: 665 }}>
+          <div className="flex p-3" style={{ width: 465 }}>
             <Highlight language="jsx">
               {getCode(isMounted)}
             </Highlight>
