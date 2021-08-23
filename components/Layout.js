@@ -56,7 +56,7 @@ const Sidebar = ({ children }) => {
               </Link>
             </li>
             <li>
-              <Link href="/" passHref>
+              <Link href="/spring" passHref>
                 <a>Spring</a>
               </Link>
             </li>

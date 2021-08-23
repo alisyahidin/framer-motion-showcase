@@ -8,35 +8,31 @@ function AnimationVariant() {
   const [justifyContent, toggleJustifyContent] = useCycle('flex-start', 'flex-end')
   const [data, setData] = useState({
     duration: 0.8,
-    ease1: 0.2,
-    ease2: 0.5,
-    ease3: 0.2,
-    ease4: 0.8,
+    bounce: 0.35
   })
 
   const getCode = (data) => `
 <motion.div
   layout
   transition={{
-    type: 'tween',
+    type: 'spring',
     duration: ${data.duration},
-    ease: [${data.ease1}, ${data.ease2}, ${data.ease3}, ${data.ease4}]
-    // ease: 'easeIn' || 'circIn'
+    bounce: ${data.bounce},
   }}
 />`.trim()
 
   return (
     <div className="w-4/5">
-      <h1 className="text-white text-3xl mb-4">Transition Tween</h1>
+      <h1 className="text-white text-3xl mb-4">Transition Spring</h1>
       <div className="flex shadow rounded-xl bg-white bg-opacity-20 blur h-96">
         <div className="flex items-center justify-center w-full overflow-hidden relative">
           <div style={{ justifyContent }} onClick={toggleJustifyContent} className="flex p-2 bg-white bg-opacity-25 w-64 rounded-lg cursor-pointer">
             <motion.div
               layout
               transition={{
-                type: 'tween',
+                type: 'spring',
                 duration: data.duration,
-                ease: [data.ease1, data.ease2, data.ease3, data.ease4]
+                bounce: data.bounce,
               }}
               className="w-24 h-24 rounded-lg bg-white"
             />
@@ -54,11 +50,8 @@ function AnimationVariant() {
               <ValueSlider title="Duration" min={0.2} max={2} step={0.1} value={data.duration} setValue={val => setData(prev => ({ ...prev, duration: val }))} />
             </div>
             <div className="mb-5">
-              <strong>Ease (Cubic Bezier)</strong>
-              <ValueSlider title="Ease 1" min={0} max={1} step={0.01} value={data.ease1} setValue={val => setData(prev => ({ ...prev, ease1: val }))} />
-              <ValueSlider title="Ease 2" min={0} max={1.5} step={0.01} value={data.ease2} setValue={val => setData(prev => ({ ...prev, ease2: val }))} />
-              <ValueSlider title="Ease 3" min={0} max={1} step={0.01} value={data.ease3} setValue={val => setData(prev => ({ ...prev, ease3: val }))} />
-              <ValueSlider title="Ease 4" min={0} max={1.5} step={0.01} value={data.ease4} setValue={val => setData(prev => ({ ...prev, ease4: val }))} />
+              <strong>Bounce</strong>
+              <ValueSlider title="Ease 1" min={0.35} max={1} step={0.01} value={data.bounce} setValue={val => setData(prev => ({ ...prev, bounce: val }))} />
             </div>
           </div>
         </div>
@@ -67,7 +60,7 @@ function AnimationVariant() {
   )
 }
 
-const Tween = () => {
+const Spring = () => {
   return (<>
     <Head>
       <title>Framer Motion</title>
@@ -79,4 +72,4 @@ const Tween = () => {
   </>)
 }
 
-export default Tween
+export default Spring
