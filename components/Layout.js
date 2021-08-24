@@ -88,6 +88,11 @@ const Sidebar = ({ children }) => {
                 <a>Pan</a>
               </Link>
             </li>
+            <li>
+              <Link href="/drag" passHref>
+                <a>Drag</a>
+              </Link>
+            </li>
           </ul>
           <strong>Motion Value</strong>
           <strong>Utilities</strong>

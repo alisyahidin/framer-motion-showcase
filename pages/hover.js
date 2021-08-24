@@ -16,7 +16,7 @@ function WhileHover() {
 
   return (
     <div className="w-4/5">
-      <h1 className="text-white text-3xl mb-4">Transition Hover</h1>
+      <h1 className="text-white text-3xl mb-4">Gesture Hover</h1>
       <div className="flex shadow rounded-xl bg-white bg-opacity-20 blur h-96">
         <div className="flex items-center justify-center w-full overflow-hidden relative">
           <motion.div

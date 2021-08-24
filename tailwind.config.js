@@ -6,6 +6,7 @@ module.exports = {
   theme: {
     cursor: {
       grab: 'grab',
+      grabbing: 'grabbing',
       ...cursor
     },
     extend: {},
