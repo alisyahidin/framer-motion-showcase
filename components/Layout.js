@@ -72,6 +72,13 @@ const Sidebar = ({ children }) => {
             </li>
           </ul>
           <strong>Gestures</strong>
+          <ul className="list-inside list-disc">
+            <li>
+              <Link href="/hover" passHref>
+                <a>Hover</a>
+              </Link>
+            </li>
+          </ul>
           <strong>Motion Value</strong>
           <strong>Utilities</strong>
           <ul className="list-inside list-disc">
