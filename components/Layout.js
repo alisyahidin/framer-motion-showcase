@@ -66,7 +66,7 @@ const Sidebar = ({ children }) => {
               </Link>
             </li>
             <li>
-              <Link href="/" passHref>
+              <Link href="/miscellaneous" passHref>
                 <a>Miscellaneous</a>
               </Link>
             </li>

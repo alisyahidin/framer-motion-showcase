@@ -7,8 +7,8 @@ import ValueSlider from 'components/ValueSlider'
 function AnimationVariant() {
   const [justifyContent, toggleJustifyContent] = useCycle('flex-start', 'flex-end')
   const [data, setData] = useState({
-    duration: 0.8,
-    bounce: 0.35
+    duration: 0.6,
+    bounce: 0.5
   })
 
   const getCode = (data) => `
