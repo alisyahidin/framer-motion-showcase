@@ -83,6 +83,11 @@ const Sidebar = ({ children }) => {
                 <a>Tap</a>
               </Link>
             </li>
+            <li>
+              <Link href="/pan" passHref>
+                <a>Pan</a>
+              </Link>
+            </li>
           </ul>
           <strong>Motion Value</strong>
           <strong>Utilities</strong>
