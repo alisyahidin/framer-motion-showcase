@@ -78,6 +78,11 @@ const Sidebar = ({ children }) => {
                 <a>Hover</a>
               </Link>
             </li>
+            <li>
+              <Link href="/tap" passHref>
+                <a>Tap</a>
+              </Link>
+            </li>
           </ul>
           <strong>Motion Value</strong>
           <strong>Utilities</strong>

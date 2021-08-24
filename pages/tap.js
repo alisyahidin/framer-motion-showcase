@@ -2,32 +2,38 @@ import Head from 'next/head'
 import { motion } from 'framer-motion'
 import Highlight from 'components/Highlight'
 
-function WhileHover() {
+function WhileTap() {
   const getCode = () => `
 <motion.div
   initial={{
-    borderRadius: 10
+    borderRadius: 10,
+    backgroundColor: '#FFFFFF'
   }}
-  whileHover={{
+  whileTap={{
     scale: 2.5,
-    borderRadius: 60
+    borderRadius: 60,
+    rotate: 90,
+    backgroundColor: '#A78BFA'
   }}
 />`.trim()
 
   return (
     <div className="w-4/5">
-      <h1 className="text-white text-3xl mb-4">Transition Hover</h1>
+      <h1 className="text-white text-3xl mb-4">Transition Tap</h1>
       <div className="flex shadow rounded-xl bg-white bg-opacity-20 blur h-96">
         <div className="flex items-center justify-center w-full overflow-hidden relative">
           <motion.div
             initial={{
-              borderRadius: 10
+              borderRadius: 10,
+              backgroundColor: '#FFFFFF'
             }}
-            whileHover={{
+            whileTap={{
               scale: 2.5,
-              borderRadius: 60
+              borderRadius: 60,
+              rotate: 90,
+              backgroundColor: '#A78BFA'
             }}
-            className="w-24 h-24 bg-white"
+            className="w-24 h-24 cursor-pointer"
           />
         </div>
         <div className="flex bg-gray-900 rounded-r-xl text-white">
@@ -42,16 +48,16 @@ function WhileHover() {
   )
 }
 
-const Hover = () => {
+const Tap = () => {
   return (<>
     <Head>
       <title>Framer Motion</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <div className="flex flex-col justify-center items-center h-screen">
-      <WhileHover />
+      <WhileTap />
     </div>
   </>)
 }
 
-export default Hover
+export default Tap
