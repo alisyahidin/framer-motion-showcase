@@ -13,6 +13,11 @@ const constraintRef = useRef()
   <motion.div
     drag
     dragConstraints={constraintRef}
+    dragTransition={{
+      bounceStiffness: 600,
+      bounceDamping: 10
+    }}
+    dragElastic={0.3}
   />
 </motion.div>
 `.trim()
@@ -25,6 +30,8 @@ const constraintRef = useRef()
           <motion.div
             drag
             dragConstraints={constraintRef}
+            dragElastic={0.3}
+            dragTransition={{ bounceStiffness: 600, bounceDamping: 10 }}
             whileTap={{
               scale: 1.3,
             }}
