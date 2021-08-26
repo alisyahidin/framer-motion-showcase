@@ -94,7 +94,9 @@ const Sidebar = ({ children }) => {
               </Link>
             </li>
           </ul>
-          <strong>Motion Value</strong>
+          <Link href="/motion-value" passHref>
+            <a><strong>Motion Value</strong></a>
+          </Link>
           <strong>Utilities</strong>
           <ul className="list-inside list-disc">
             <li>
