@@ -1,33 +1,23 @@
-import { useEffect } from 'react';
 import Head from 'next/head'
-import { animate, motion, useMotionTemplate, useMotionValue, useTransform } from 'framer-motion'
+import { animate, motion, useMotionTemplate, useMotionValue, useTransform, useVelocity } from 'framer-motion'
 
 function MotionValueAnimate() {
   const x = useMotionValue(0);
-  const scale = useMotionValue(1);
-  const transform = useMotionTemplate`translateX(${x}px) scale(${scale})`
   const backgroundColor = useTransform(x, [-300, 0, 300], ['#A78BFA', '#FFFFFF', '#F87171'])
+  const xVelocity = useVelocity(x)
+  const scaleY = useTransform(xVelocity, [-4000, 0, 4000], [0.1, 1, 0.1]);
+  const scaleX = useTransform(xVelocity, [-4000, 0, 4000], [1.5, 1, 1.5]);
+  const transform = useMotionTemplate`translateX(${x}px) scaleY(${scaleY}) scaleX(${scaleX})`
 
   const handleTap = (_, info) => {
     const translateX = info.point.x - (window.innerWidth / 2)
 
-    animate(x, translateX, {
+    !x.isAnimating() && animate(x, translateX, {
       type: 'spring',
       duration: 0.7
     })
   }
-
-  useEffect(() => {
-    x.onChange(() => {
-      const newScale = Math.abs(x.getVelocity()) > 5000
-        ? 1
-        : 1 - Math.abs(x.getVelocity() / 300)
-      animate(scale, newScale, {
-        type: 'tween'
-      })
-    })
-  }, [])
-
+  console.log('test')
   return (
     <div className="flex flex-col justify-center w-4/5 h-screen">
       <h1 className="text-white text-3xl mb-4">Motion Value</h1>
