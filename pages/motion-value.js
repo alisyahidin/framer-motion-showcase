@@ -5,7 +5,7 @@ function MotionValueAnimate() {
   const x = useMotionValue(0);
   const xVelocity = useVelocity(x)
   const scaleY = useTransform(xVelocity, [-4000, 0, 4000], [0.1, 1, 0.1]);
-  const scaleX = useTransform(xVelocity, [-4000, 0, 4000], [1.5, 1, 1.5]);
+  const scaleX = useTransform(xVelocity, [-4000, 0, 4000], [2, 1, 2]);
   const transform = useMotionTemplate`translateX(${x}px) scaleY(${scaleY}) scaleX(${scaleX})`
 
   const handleTap = (_, info) => {
