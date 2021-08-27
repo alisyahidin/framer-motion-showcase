@@ -3,7 +3,6 @@ import { animate, motion, useMotionTemplate, useMotionValue, useTransform, useVe
 
 function MotionValueAnimate() {
   const x = useMotionValue(0);
-  const backgroundColor = useTransform(x, [-300, 0, 300], ['#A78BFA', '#FFFFFF', '#F87171'])
   const xVelocity = useVelocity(x)
   const scaleY = useTransform(xVelocity, [-4000, 0, 4000], [0.1, 1, 0.1]);
   const scaleX = useTransform(xVelocity, [-4000, 0, 4000], [1.5, 1, 1.5]);
@@ -17,7 +16,7 @@ function MotionValueAnimate() {
       duration: 0.7
     })
   }
-  console.log('test')
+
   return (
     <div className="flex flex-col justify-center w-4/5 h-screen">
       <h1 className="text-white text-3xl mb-4">Motion Value</h1>
@@ -26,7 +25,7 @@ function MotionValueAnimate() {
           <motion.div
             key="box"
             className="w-24 h-24 rounded-lg bg-white"
-            style={{ transform, backgroundColor }}
+            style={{ transform }}
           />
         </motion.div>
       </div>
