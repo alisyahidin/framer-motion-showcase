@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import Head from 'next/head'
-import { animate, motion, useMotionTemplate, useMotionValue } from 'framer-motion'
-import { snap } from 'popmotion'
+import { animate, motion, useMotionTemplate, useMotionValue, useTransform } from 'framer-motion'
 
 function MotionValueAnimate() {
   const x = useMotionValue(0);
   const scale = useMotionValue(1);
   const transform = useMotionTemplate`translateX(${x}px) scale(${scale})`
+  const backgroundColor = useTransform(x, [-300, 0, 300], ['#A78BFA', '#FFFFFF', '#F87171'])
 
   const handleTap = (_, info) => {
     const translateX = info.point.x - (window.innerWidth / 2)
@@ -36,7 +36,7 @@ function MotionValueAnimate() {
           <motion.div
             key="box"
             className="w-24 h-24 rounded-lg bg-white"
-            style={{ transform }}
+            style={{ transform, backgroundColor }}
           />
         </motion.div>
       </div>
