@@ -23,7 +23,6 @@ function MotionValueAnimate() {
       <div className="flex shadow rounded-xl bg-white bg-opacity-20 h-32 blur">
         <motion.div onTap={handleTap} className="flex items-center justify-center w-full overflow-hidden relative cursor-pointer">
           <motion.div
-            key="box"
             className="w-24 h-24 rounded-lg bg-white"
             style={{ transform }}
           />

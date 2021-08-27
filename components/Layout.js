@@ -13,118 +13,97 @@ const Sidebar = ({ children }) => {
   }, [router.events])
 
   return <>
-    <button onClick={() => setOpenSidebar(prev => !prev)} className="absolute left-4 top-1/2 transform-gpu -translate-y-1/2 h-8 w-8 bg-white rounded z-10">
+    <button onClick={() => setOpenSidebar(prev => !prev)} className="absolute left-4 top-1/2 transform-gpu -translate-y-1/2 p-2 rounded z-10">
+      <svg viewBox="0 0 100 80" width="40" height="40">
+        <rect fill="#FFF" width="100" height="15"></rect>
+        <rect fill="#FFF" y="30" width="100" height="15"></rect>
+        <rect fill="#FFF" y="60" width="100" height="15"></rect>
+      </svg>
     </button>
     <AnimatePresence>
       {openSidebar && <>
         <motion.nav
           key="menu"
-          className="fixed h-screen flex flex-col rounded-r-xl p-3 bg-white z-20"
+          className="fixed h-screen flex flex-col rounded-r-xl p-3 bg-white z-20 overflow-y-scroll"
           initial={{ x: '-100%' }}
           animate={{ x: '0%' }}
           exit={{ x: '-100%' }}
           transition={{ type: 'tween', ease: [0.20, .75, .40, .95] }}
         >
-          <strong>motion Component</strong>
-          <ul className="list-inside list-disc">
+          <p className="p-2 rounded bg-purple-400 mb-2 text-white">motion Component</p>
+          <ul className="flex flex-col gap-2 ml-4 mb-2">
             <li>
               <Link href="/basic-animation" passHref>
-                <a>Basic animation</a>
+                <a className="block underline p-2 bg-gray-100 rounded">Basic animation</a>
               </Link>
             </li>
             <li>
               <Link href="/layout-animation" passHref>
-                <a>Layout Animation</a>
+                <a className="block underline p-2 bg-gray-100 rounded">Layout Animation</a>
               </Link>
             </li>
             <li>
               <Link href="/shared-layout-animation" passHref>
-                <a>Shared Layout Animation</a>
+                <a className="block underline p-2 bg-gray-100 rounded">Shared Layout Animation</a>
               </Link>
             </li>
           </ul>
-          <strong>Transition</strong>
-          <ul className="list-inside list-disc">
+          <p className="p-2 rounded bg-red-400 mb-2 text-white">Transition</p>
+          <ul className="flex flex-col gap-2 ml-4 mb-2">
             <li>
               <Link href="/orchestration" passHref>
-                <a>Orchestration</a>
+                <a className="block underline p-2 bg-gray-100 rounded">Orchestration</a>
               </Link>
             </li>
             <li>
               <Link href="/tween" passHref>
-                <a>Tween</a>
+                <a className="block underline p-2 bg-gray-100 rounded">Tween</a>
               </Link>
             </li>
             <li>
               <Link href="/spring" passHref>
-                <a>Spring</a>
+                <a className="block underline p-2 bg-gray-100 rounded">Spring</a>
               </Link>
             </li>
             <li>
               <Link href="/" passHref>
-                <a>Inertia</a>
+                <a className="block underline p-2 bg-gray-100 rounded">Inertia</a>
               </Link>
             </li>
             <li>
               <Link href="/miscellaneous" passHref>
-                <a>Miscellaneous</a>
+                <a className="block underline p-2 bg-gray-100 rounded">Miscellaneous</a>
               </Link>
             </li>
           </ul>
-          <strong>Gestures</strong>
-          <ul className="list-inside list-disc">
+          <p className="p-2 rounded bg-blue-400 mb-2 text-white">Gestures</p>
+          <ul className="flex flex-col gap-2 ml-4 mb-2">
             <li>
               <Link href="/hover" passHref>
-                <a>Hover</a>
+                <a className="block underline p-2 bg-gray-100 rounded">Hover</a>
               </Link>
             </li>
             <li>
               <Link href="/tap" passHref>
-                <a>Tap</a>
+                <a className="block underline p-2 bg-gray-100 rounded">Tap</a>
               </Link>
             </li>
             <li>
               <Link href="/pan" passHref>
-                <a>Pan</a>
+                <a className="block underline p-2 bg-gray-100 rounded">Pan</a>
               </Link>
             </li>
             <li>
               <Link href="/drag" passHref>
-                <a>Drag</a>
+                <a className="block underline p-2 bg-gray-100 rounded">Drag</a>
               </Link>
             </li>
           </ul>
           <Link href="/motion-value" passHref>
-            <a><strong>Motion Value</strong></a>
+            <a>
+              <p className="p-2 underline rounded bg-green-400 mb-2 text-white">Motion Value</p>
+            </a>
           </Link>
-          <strong>Utilities</strong>
-          <ul className="list-inside list-disc">
-            <li>
-              <Link href="/" passHref>
-                <a>useCycle</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/" passHref>
-                <a>useAnimation</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/" passHref>
-                <a>useReducedMotion</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/" passHref>
-                <a>LazyMotion</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/" passHref>
-                <a>MotionConfig</a>
-              </Link>
-            </li>
-          </ul>
         </motion.nav>
         <motion.div
           key="backdrop-menu"
