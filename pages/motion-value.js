@@ -1,6 +1,7 @@
-import Head from 'next/head'
-import { animate, motion, useMotionTemplate, useMotionValue, useTransform } from 'framer-motion'
 import { useEffect } from 'react';
+import Head from 'next/head'
+import { animate, motion, useMotionTemplate, useMotionValue } from 'framer-motion'
+import { snap } from 'popmotion'
 
 function MotionValueAnimate() {
   const x = useMotionValue(0);
@@ -18,7 +19,9 @@ function MotionValueAnimate() {
 
   useEffect(() => {
     x.onChange(() => {
-      const newScale = 1 - Math.abs(x.getVelocity() / 300)
+      const newScale = Math.abs(x.getVelocity()) > 5000
+        ? 1
+        : 1 - Math.abs(x.getVelocity() / 300)
       animate(scale, newScale, {
         type: 'tween'
       })
